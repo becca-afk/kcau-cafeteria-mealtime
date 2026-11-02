@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
+import { mealtimeLogo, handleImageError } from '../assets/logo';
 
 export const SmartCardProfile: React.FC = () => {
   const {
@@ -25,7 +26,7 @@ export const SmartCardProfile: React.FC = () => {
         <div className="kca-smartcard">
           <div className="smartcard-top">
             <div className="smartcard-brand">
-              <img src="/assets/logo.jpg" alt="KCA" className="smartcard-logo" />
+              <img src={mealtimeLogo} alt="KCA" className="smartcard-logo" onError={handleImageError} />
               <div>
                 <span className="smartcard-uni">KCA UNIVERSITY</span>
                 <span className="smartcard-type">OFFICIAL STUDENT MEALCARD</span>

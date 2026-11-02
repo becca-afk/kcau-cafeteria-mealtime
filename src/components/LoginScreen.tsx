@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { api } from '../services/api';
 import { Role } from '../types';
+import { mealtimeLogo, handleImageError } from '../assets/logo';
 
 export const LoginScreen: React.FC = () => {
   const {
@@ -102,7 +103,7 @@ export const LoginScreen: React.FC = () => {
       <div className="login-bg"></div>
       <div className="login-content">
         <div className="login-logo-wrap">
-          <img src="/assets/logo.jpg" alt="MealTime" className="login-logo" />
+          <img src={mealtimeLogo} alt="MealTime" className="login-logo" onError={handleImageError} />
           <div className="login-logo-ring"></div>
         </div>
 

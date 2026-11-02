@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { mealtimeIcon, handleImageError } from '../../assets/logo';
 
 export const InstallAppModal: React.FC = () => {
   const { isInstallOpen, setIsInstallOpen, canInstallPWA, triggerPWAInstall } = useApp();
@@ -32,8 +33,9 @@ export const InstallAppModal: React.FC = () => {
         <div className="modal-header" style={{ marginBottom: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img
-              src="/icon-192.png"
+              src={mealtimeIcon}
               alt="MealTime"
+              onError={handleImageError}
               style={{
                 width: '54px',
                 height: '54px',

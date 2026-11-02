@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { AccountSwitcherModal } from './modals/AccountSwitcherModal';
+import { mealtimeLogo, handleImageError } from '../assets/logo';
 
 export const Header: React.FC = () => {
   const {
@@ -39,7 +40,7 @@ export const Header: React.FC = () => {
     <>
       <header className="app-header">
         <div className="header-left" onClick={() => setCurrentPage(role === 'staff' ? 'kds' : role === 'admin' ? 'analytics' : 'home')} style={{ cursor: 'pointer' }}>
-          <img src="/assets/logo.jpg" alt="MealTime" className="header-logo" />
+          <img src={mealtimeLogo} alt="MealTime" className="header-logo" onError={handleImageError} />
           <div>
             <span className="header-brand">
               MealTime{role === 'staff' ? ' · KDS' : role === 'admin' ? ' · Admin' : ''}
