@@ -131,7 +131,7 @@ export const FeedbackModal: React.FC = () => {
             disabled={loading || !comment.trim()}
             style={{ width: '100%', opacity: !comment.trim() ? 0.6 : 1 }}
           >
-            <span>{loading ? 'Submitting…' : 'Submit Review & Earn +5 Points'}</span>
+            <span>{loading ? 'Submitting…' : 'Submit Review'}</span>
           </button>
         </form>
       </div>
