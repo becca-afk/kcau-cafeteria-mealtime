@@ -12,7 +12,6 @@ export const SmartCardProfile: React.FC = () => {
     setDarkTheme,
     logout,
     showToast,
-    triggerPWAInstall,
   } = useApp();
 
   const handleEditPref = (title: string) => {
@@ -153,36 +152,11 @@ export const SmartCardProfile: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile App Download Card */}
-      <div className="profile-section">
-        <h3>Download MealTime Mobile App</h3>
-        <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.5 }}>
-          Install MealTime directly on your device for instant pre-ordering, digital MealCard access, and live order alerts.
-        </p>
-        <button
-          className="topup-action-btn"
-          onClick={() => triggerPWAInstall()}
-          type="button"
-          style={{
-            background: 'linear-gradient(135deg, var(--maroon) 0%, var(--maroon-deep) 100%)',
-            border: 'none',
-            color: '#FFF',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-          }}
-        >
-          <span>📲 Download MealTime App</span>
-        </button>
-      </div>
 
       {/* Sign Out Button */}
       <button className="logout-btn" onClick={logout} type="button">
         Sign Out from Session
       </button>
-
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

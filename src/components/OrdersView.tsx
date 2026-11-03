@@ -197,8 +197,6 @@ export const OrdersView: React.FC = () => {
           )}
         </div>
       )}
-
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

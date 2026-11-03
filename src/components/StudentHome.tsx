@@ -267,8 +267,6 @@ export const StudentHome: React.FC = () => {
           </div>
         ))}
       </div>
-
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

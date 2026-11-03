@@ -3935,15 +3935,15 @@ button:active, .btn:active, .icon-btn:active, .avatar-btn:active, .menu-card:act
 /* ============================================================
    FLOATING CHECKOUT BAR & BOTTOM NAV CLEARANCE FIX
    ============================================================ */
-/* Clearance so bottom-nav NEVER blocks content */
+/* Clearance so bottom-nav NEVER blocks content without excessive blank space */
 .app-main {
-  padding-bottom: 160px !important;
+  padding-bottom: 84px !important;
 }
 .page {
-  padding-bottom: 140px !important;
+  padding-bottom: 0px !important;
 }
 .nav-clearance-spacer {
-  height: 120px;
+  height: 8px;
   width: 100%;
   display: block;
   pointer-events: none;

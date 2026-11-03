@@ -362,7 +362,6 @@ export const MenuGrid: React.FC = () => {
           </div>
         </div>
       )}
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

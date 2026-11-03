@@ -435,8 +435,6 @@ export const AnalyticsDashboard: React.FC = () => {
           </div>
         </div>
       )}
-
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

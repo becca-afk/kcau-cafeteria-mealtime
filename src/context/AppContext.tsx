@@ -84,10 +84,6 @@ interface AppContextType {
   setIsNotifDrawerOpen: (open: boolean) => void;
   isRegisterOpen: boolean;
   setIsRegisterOpen: (open: boolean) => void;
-  isInstallOpen: boolean;
-  setIsInstallOpen: (open: boolean) => void;
-  canInstallPWA: boolean;
-  triggerPWAInstall: () => Promise<void>;
   isOnline: boolean;
 
   // Actions
@@ -179,9 +175,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [detailItem, setDetailItem] = useState<MenuItem | null>(null);
   const [isNotifDrawerOpen, setIsNotifDrawerOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isInstallOpen, setIsInstallOpen] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [canInstallPWA, setCanInstallPWA] = useState(false);
   const [isOnline, setIsOnline] = useState<boolean>(typeof navigator !== 'undefined' ? navigator.onLine : true);
 
   useEffect(() => {
@@ -201,36 +194,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
-
-  useEffect(() => {
-    const handleBeforeInstall = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setCanInstallPWA(true);
-    };
-    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
-    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
-  }, []);
-
-  const triggerPWAInstall = async () => {
-    if (deferredPrompt) {
-      try {
-        await deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice && choice.outcome === 'accepted') {
-          showToast('🎉 MealTime downloaded & installed on your device!', 'success');
-          setIsInstallOpen(false);
-        }
-      } catch (err) {
-        console.warn('Install prompt error:', err);
-      } finally {
-        setDeferredPrompt(null);
-        setCanInstallPWA(false);
-      }
-    } else {
-      setIsInstallOpen(true);
-    }
-  };
 
   // Sync dark theme class
   useEffect(() => {
@@ -708,10 +671,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setIsNotifDrawerOpen,
         isRegisterOpen,
         setIsRegisterOpen,
-        isInstallOpen,
-        setIsInstallOpen,
-        canInstallPWA,
-        triggerPWAInstall,
         isOnline,
         placeOrder,
         confirmMpesaOrder,

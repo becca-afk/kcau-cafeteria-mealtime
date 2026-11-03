@@ -280,8 +280,6 @@ export const KdsBoard: React.FC = () => {
           })
         )}
       </div>
-
-      <div className="nav-clearance-spacer"></div>
     </section>
   );
 };

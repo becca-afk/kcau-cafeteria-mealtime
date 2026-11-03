@@ -20,7 +20,6 @@ import { FeedbackModal } from './components/modals/FeedbackModal';
 import { ItemDetailModal } from './components/modals/ItemDetailModal';
 import { NotificationDrawer } from './components/modals/NotificationDrawer';
 import { ToastContainer } from './components/modals/ToastContainer';
-import { InstallAppModal } from './components/modals/InstallAppModal';
 
 export const App: React.FC = () => {
   const { isLoggedIn, currentPage, role, isOnline } = useApp();
@@ -94,7 +93,6 @@ export const App: React.FC = () => {
       <ItemDetailModal />
       <NotificationDrawer />
       <ToastContainer />
-      <InstallAppModal />
     </div>
   );
 };
