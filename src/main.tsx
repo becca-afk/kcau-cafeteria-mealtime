@@ -15,12 +15,14 @@ if (rootEl) {
   );
 }
 
-// Register Progressive Web App Service Worker for offline support & installability
+// Online-only policy: unregister any previously installed service worker so stale caches never block loading
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {
-      // Ignore if not supported in dev or iframe
-    });
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => {
+        registration.unregister().catch(() => {});
+      });
+    }).catch(() => {});
   });
 }
 
