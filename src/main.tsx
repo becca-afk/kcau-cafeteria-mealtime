@@ -15,14 +15,29 @@ if (rootEl) {
   );
 }
 
-// Online-only policy: unregister any previously installed service worker so stale caches never block loading
-if ('serviceWorker' in navigator) {
+// Online-only policy: unregister any legacy service worker and purge old CacheStorage entries
+if (typeof window !== 'undefined') {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister().catch(() => {});
-      });
-    }).catch(() => {});
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister().catch(() => {});
+          });
+        })
+        .catch(() => {});
+    }
+    if ('caches' in window) {
+      caches
+        .keys()
+        .then((names) => {
+          names.forEach((name) => {
+            caches.delete(name).catch(() => {});
+          });
+        })
+        .catch(() => {});
+    }
   });
 }
 

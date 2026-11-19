@@ -5,3 +5,4 @@ dist/
 .env
 .aistudio/
 .playwright-cli/
+public/assets/aistudio/
